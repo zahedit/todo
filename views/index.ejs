@@ -7,7 +7,12 @@
     <% if (locals.items) { %>
         <ul class="todolists">
             <% locals.items.forEach((todo) => { %>
-                <li data-id="<%= todo._id %>"><%= todo.name %></li>
+                <form action="/delete" method="post">
+                    <li class="item" data-id="<%= todo._id %>">
+                        <input type="checkbox" name="checkbox" onChange="this.form.submit()" value="<%= todo._id %>" class="todo-checkbox">
+                        <span class="todo-text"><%= todo.name %></span>
+                    </li>
+                </form>
             <% }) %>
         </ul>        
         <% } %>
@@ -41,5 +46,19 @@
         }
     });
     </script> -->
-
+    <script>
+        document.querySelectorAll(".todo-checkbox").forEach((checkbox) => {
+            checkbox.addEventListener("change", function () {
+                const parentLi = this.closest(".item"); // Find the closest parent <li>
+                const todoText = parentLi.querySelector(".todo-text"); // Find the <span> containing the text
+    
+                if (this.checked) {
+                    todoText.classList.add("crossed"); // Add crossed style
+                } else {
+                    todoText.classList.remove("crossed"); // Remove crossed style
+                }
+            });
+        });
+    </script>
+    
 <%- include("partials/footer.ejs") %>

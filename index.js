@@ -46,6 +46,18 @@ app.post("/", (req, res) =>{
     res.redirect("/");
 });
 
+app.post("/delete", async (req, res) =>{
+    const itemId = req.body.checkbox;
+    try {
+        await Item.findByIdAndDelete(itemId);
+        console.log(`item ${itemId} removed`);
+        res.redirect("/");
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Error deleting item");
+    }
+});
+
 //---------------------------------------------------
 
 app.listen(port, function() {
