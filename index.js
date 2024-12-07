@@ -86,7 +86,6 @@ app.post("/", async (req, res) =>{
             if (categoryOnDatabase) {
                 categoryOnDatabase.items.push(newItem);
                 await categoryOnDatabase.save();
-                await newItem.save();
             }
             res.redirect("/category/" + category);
         }
@@ -98,13 +97,25 @@ app.post("/", async (req, res) =>{
 
 app.post("/delete", async (req, res) =>{
     const itemId = req.body.checkbox;
-    try {
-        await Item.findByIdAndDelete(itemId);
-        console.log(`item ${itemId} removed`);
-        res.redirect("/");
-    } catch (error) {
-        console.error(error);
-        res.status(500).send("Error deleting item");
+    const category = req.body.category;
+
+    if (category === "Today") {
+        try {
+            await Item.findByIdAndDelete(itemId);
+            console.log(`item ${itemId} removed`);
+            res.redirect("/");
+        } catch (error) {
+            console.error(error);
+            res.status(500).send("Error deleting item");
+        }
+    } else {
+        try {
+            await Category.findOneAndUpdate({name: category}, {$pull: {items: {_id: itemId}}});
+            res.redirect("/category/" + category);
+        } catch (error) {
+            console.error(error);
+            res.status(500).send("Error deleting item");
+        }
     }
 });
 

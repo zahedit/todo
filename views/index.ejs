@@ -10,6 +10,7 @@
                 <form action="/delete" method="post">
                     <li class="item" data-id="<%= todo._id %>">
                         <input type="checkbox" name="checkbox" onChange="this.form.submit()" value="<%= todo._id %>" class="todo-checkbox">
+                        <input type="hidden" name="category" value="<%= indexData["category"] %>">
                         <span class="todo-text"><%= todo.name %></span>
                     </li>
                 </form>
