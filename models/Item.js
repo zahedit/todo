@@ -5,4 +5,4 @@ const itemSchema = {
 };
 
 const Item = mongoose.model("Item", itemSchema);
-export default Item;
+export { itemSchema, Item };
