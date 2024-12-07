@@ -3,6 +3,7 @@ import bodyParser from "body-parser";
 import connectDB from "./db.js";
 import { Item } from "./models/Item.js";
 import Category from "./models/Category.js";
+import _ from "lodash"; 
 
 //---------------------------------------------------
 
@@ -53,7 +54,7 @@ app.get("/", async (req, res) => {
 });
 
 app.get("/category/:customListName", async (req, res) =>{
-    const customListName = req.params.customListName;
+    const customListName = _.capitalize(req.params.customListName);
     const foundCategory = await Category.findOne({name: customListName});
     if (!foundCategory) {
         const category = new Category ({
