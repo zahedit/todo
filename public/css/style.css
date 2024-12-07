@@ -1,0 +1,106 @@
+body {
+    color: #291611;
+    background-color: #E7C59C;
+    box-sizing: border-box;
+}
+
+ul {
+    list-style-type: none; /* Removes the bullet points */
+    margin: 0;             /* Optional: Removes default margin */
+    padding: 0;            /* Optional: Removes default padding */
+  }
+
+#navbar {
+    width: 100%;
+    padding: 0.5rem 1rem;
+    box-sizing: border-box;
+}
+
+#navbar ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+    gap: 2rem;
+}
+
+#main {
+    width: 400px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#main h1 {
+    text-align: center;
+    width: 400px;
+    background-color: #CC7D3B;
+    padding: 1rem;
+    border-radius: 8px;
+    box-sizing: border-box;
+    color: #FEF0D4;
+}
+
+#main aside {
+    background-color: white;
+    box-shadow: 4px 4px 12px #9A6C41;
+    width: 100%;
+    padding: 1rem;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+#main ul li {
+    color: #291611;
+    font-size: 1.5rem;
+    border-bottom: 1px solid #9A6C41;
+    padding: 0.5rem 0;
+}
+
+#main form {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 0.5rem;
+}
+
+#main form input[type="text"] {
+    flex: 3; /* Takes 3 parts of the available space */
+    margin-right: 10px; /* Optional: Adds space between the input and button */
+    border: none;
+    outline: none;
+    color: #291611;
+    font-size: 1rem;
+    border-bottom: 3px solid transparent;
+    padding: 0.5rem 0;
+}
+
+#main form input[type="text"]:focus {
+    border-bottom: 3px solid #9A6C41;
+}
+
+#main form button {
+    width: 40px!important;
+    height: 40px!important;
+    background-color: #9A6C41;
+    font-size: 32px;
+    color: wheat;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.crossed {
+    text-decoration: line-through;
+    color: gray!important;
+}
+
+#footer {
+    width: 100%;
+    margin-top: 4rem;
+    text-align: center;
+}

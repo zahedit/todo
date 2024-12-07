@@ -1,0 +1,45 @@
+<%- include("partials/header.ejs") %>
+
+<section id="main">
+    <h1>Welcome</h1>
+
+    <aside>
+    <% if (locals.items) { %>
+        <ul class="todolists">
+            <% locals.items.forEach((todo) => { %>
+                <li data-id="<%= todo._id %>"><%= todo.name %></li>
+            <% }) %>
+        </ul>        
+        <% } %>
+        
+        <form action="/" method="POST">
+            <input type="text" name="todo" placeholder="New Item">
+            <button>+</button>
+        </form>
+    </aside>
+</section>
+
+<!-- <script>
+    document.querySelector(".todolists").addEventListener("click", function (event) {
+        if (event.target.tagName === "LI") {
+            const li = event.target;
+            const id = li.getAttribute("data-id"); // Get the item's ID
+            li.classList.toggle("crossed");
+    
+            // Send DELETE request to the server
+            fetch(`/delete-item/${id}`, {
+                method: "DELETE",
+            })
+            .then(response => {
+                if (response.ok) {
+                    li.remove(); // Remove the item from the DOM if deletion is successful
+                } else {
+                    alert("Failed to delete the item. Please try again.");
+                }
+            })
+            .catch(error => console.error("Error:", error));
+        }
+    });
+    </script> -->
+
+<%- include("partials/footer.ejs") %>
