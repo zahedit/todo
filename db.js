@@ -3,12 +3,10 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
+const mongoUri = "mongodb+srv://admin-amir:old_snake1993@amir.lnyzw.mongodb.net/todolist";
+
 const connectDB = async () => {
   try {
-    const mongoUri = (process.env.MONGO_URI || "").replace(/^"|"$/g, ""); // Handle undefined or strip quotes
-    if (!mongoUri) {
-      throw new Error("MONGO_URI is not defined or invalid");
-    }
     const conn = await mongoose.connect(mongoUri, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
