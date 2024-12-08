@@ -1,9 +1,10 @@
 import express from "express";
 import bodyParser from "body-parser";
-import connectDB from "./db.js";
 import { Item } from "./models/Item.js";
 import Category from "./models/Category.js";
 import _ from "lodash"; 
+import dotenv from "dotenv";
+import connectDB from "./db.js";
 
 //---------------------------------------------------
 
@@ -11,6 +12,7 @@ const app = express();
 const port = process.env.PORT || 3000;
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
+dotenv.config();
 connectDB();
 
 //---------------------------------------------------
